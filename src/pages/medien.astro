@@ -5,7 +5,14 @@ import path from "node:path";
 
 // Logic to read and group press images
 const pressDir = path.join(process.cwd(), "public", "images", "press");
-let articles = [];
+
+interface ArticleGroup {
+    rawDate: string;
+    title: string;
+    images: { src: string; part: number; filename: string }[];
+}
+
+let articles: ArticleGroup[] = [];
 
 try {
     // Ensure directory exists
@@ -14,7 +21,7 @@ try {
             .readdirSync(pressDir)
             .filter((f) => /\.(jpg|jpeg|png|webp)$/i.test(f));
 
-        const groups = {};
+        const groups: Record<string, ArticleGroup> = {};
 
         files.forEach((file) => {
             // Expected format: press-YYYY-MM-DD-title[-partX].ext
@@ -67,7 +74,7 @@ try {
     console.error("Error loading press images:", e);
 }
 
-function formatDate(dateStr) {
+function formatDate(dateStr: string) {
     if (dateStr.includes("xx")) {
         return dateStr.substring(0, 4); // Just returning the year if month/day is unknown
     }

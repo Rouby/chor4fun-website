@@ -2197,6 +2197,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@astrojs/check", "virtual:bc498038c9e78b4717e429e6fd19c75cb8d70c5d52e26763994cdaa8a7e93d7e42056b772ef7c61b063fd7d1e1bd33bdbc37ff1d541289396d2e3560ae198b75#npm:0.9.6"],\
           ["@astrojs/react", "virtual:bc498038c9e78b4717e429e6fd19c75cb8d70c5d52e26763994cdaa8a7e93d7e42056b772ef7c61b063fd7d1e1bd33bdbc37ff1d541289396d2e3560ae198b75#npm:4.4.2"],\
+          ["@types/node", "npm:24.10.1"],\
           ["@types/react", "npm:19.2.7"],\
           ["@types/react-dom", "virtual:bc498038c9e78b4717e429e6fd19c75cb8d70c5d52e26763994cdaa8a7e93d7e42056b772ef7c61b063fd7d1e1bd33bdbc37ff1d541289396d2e3560ae198b75#npm:19.2.3"],\
           ["astro", "npm:5.16.4"],\
@@ -5274,6 +5275,7 @@ const RAW_RUNTIME_STATE =
           ["frohgestimmt-website", "workspace:."],\
           ["@astrojs/check", "virtual:bc498038c9e78b4717e429e6fd19c75cb8d70c5d52e26763994cdaa8a7e93d7e42056b772ef7c61b063fd7d1e1bd33bdbc37ff1d541289396d2e3560ae198b75#npm:0.9.6"],\
           ["@astrojs/react", "virtual:bc498038c9e78b4717e429e6fd19c75cb8d70c5d52e26763994cdaa8a7e93d7e42056b772ef7c61b063fd7d1e1bd33bdbc37ff1d541289396d2e3560ae198b75#npm:4.4.2"],\
+          ["@types/node", "npm:24.10.1"],\
           ["@types/react", "npm:19.2.7"],\
           ["@types/react-dom", "virtual:bc498038c9e78b4717e429e6fd19c75cb8d70c5d52e26763994cdaa8a7e93d7e42056b772ef7c61b063fd7d1e1bd33bdbc37ff1d541289396d2e3560ae198b75#npm:19.2.3"],\
           ["astro", "npm:5.16.4"],\
