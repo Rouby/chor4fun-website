@@ -4,48 +4,154 @@ interface Props {
 }
 
 const { title } = Astro.props;
+const currentPath = Astro.url.pathname;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="de">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content="Frohgestimmt - Gemeinnützige Organisation mit den Chören Chor4Fun und Frohgestimmt aus Tarmstedt" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<title>{title} - Frohgestimmt</title>
 	</head>
 	<body>
-		<slot />
+		<header>
+			<div class="container">
+				<div class="header-content">
+					<h1 class="logo">Frohgestimmt</h1>
+					<nav>
+						<a href="/" class={currentPath === '/' ? 'active' : ''}>Home</a>
+						<a href="/chor4fun" class={currentPath === '/chor4fun' ? 'active' : ''}>Chor4Fun</a>
+						<a href="/frohgestimmt" class={currentPath === '/frohgestimmt' ? 'active' : ''}>Frohgestimmt</a>
+					</nav>
+				</div>
+			</div>
+		</header>
+		<main>
+			<slot />
+		</main>
+		<footer>
+			<div class="container">
+				<p>&copy; 2024 Frohgestimmt - Gemeinnützige Organisation</p>
+			</div>
+		</footer>
 	</body>
 </html>
 <style is:global>
 	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
+		--primary: 220, 60, 50;
+		--primary-light: 240, 80, 70;
+		--primary-dark: 200, 50, 40;
+		--secondary: 150, 65, 50;
 		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
+			135deg,
+			hsl(var(--primary)),
+			hsl(var(--primary-light)) 50%,
+			hsl(var(--secondary)) 100%
 		);
+		--bg-color: #f8f9fa;
+		--text-color: #333;
+		--card-bg: #ffffff;
 	}
+	
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	
 	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		background: var(--bg-color);
+		color: var(--text-color);
+		line-height: 1.6;
 	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
+	
+	body {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+	
+	header {
+		background: var(--accent-gradient);
+		color: white;
+		padding: 1.5rem 0;
+		box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+	}
+	
+	.header-content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+	
+	.logo {
+		font-size: 2rem;
+		font-weight: 700;
+		margin: 0;
+	}
+	
+	nav {
+		display: flex;
+		gap: 2rem;
+	}
+	
+	nav a {
+		color: white;
+		text-decoration: none;
+		font-weight: 500;
+		padding: 0.5rem 1rem;
+		border-radius: 5px;
+		transition: background 0.3s ease;
+	}
+	
+	nav a:hover,
+	nav a.active {
+		background: rgba(255, 255, 255, 0.2);
+	}
+	
+	main {
+		flex: 1;
+		padding: 3rem 0;
+	}
+	
+	footer {
+		background: #333;
+		color: white;
+		text-align: center;
+		padding: 2rem 0;
+		margin-top: auto;
+	}
+	
+	footer p {
+		margin: 0;
+	}
+	
+	@media (max-width: 768px) {
+		.header-content {
+			flex-direction: column;
+			text-align: center;
+		}
+		
+		nav {
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+		
+		.container {
+			padding: 0 1rem;
+		}
 	}
 </style>

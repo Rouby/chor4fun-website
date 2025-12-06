@@ -1,0 +1,203 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Chor4Fun">
+  <div class="container">
+    <article class="choir-page">
+      <div class="hero-section">
+        <h1>Chor4Fun</h1>
+        <p class="tagline">Leidenschaft für vielfältige Musik seit 2016</p>
+      </div>
+
+      <section class="about-section">
+        <h2>Über uns</h2>
+        <p>
+          Der Chor4fun besteht seit 2016 und widmet sich leidenschaftlich der Vielfalt der Musik. 
+          Unser Repertoire reicht von mitreißendem Gospel über eingängige Popsongs bis hin zu 
+          berührenden deutschsprachigen Liedern.
+        </p>
+        <p>
+          Wir präsentieren unsere Musik bei verschiedenen Auftritten, zum Beispiel in der Kirche 
+          und in der KGS Tarmstedt. Ob festliche Anlässe oder gesellige Veranstaltungen – 
+          wir bringen Freude und Begeisterung für die Musik zu unserem Publikum.
+        </p>
+      </section>
+
+      <section class="repertoire-section">
+        <h2>Unser Repertoire</h2>
+        <div class="repertoire-grid">
+          <div class="repertoire-card">
+            <h3>🎵 Gospel</h3>
+            <p>Mitreißende Gospel-Songs voller Energie und Spiritualität</p>
+          </div>
+          <div class="repertoire-card">
+            <h3>🎤 Pop</h3>
+            <p>Eingängige Popsongs, die das Publikum begeistern</p>
+          </div>
+          <div class="repertoire-card">
+            <h3>🎼 Deutsche Lieder</h3>
+            <p>Berührende deutschsprachige Lieder mit Herz</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="rehearsal-section">
+        <h2>Proben</h2>
+        <div class="info-box">
+          <div class="info-item">
+            <strong>Wann:</strong>
+            <span>Jeden Mittwoch um 20:00 Uhr</span>
+          </div>
+          <div class="info-item">
+            <strong>Wo:</strong>
+            <span>Dorfgemeinschaftshaus in Ostertimke</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="join-section">
+        <h2>Mitmachen</h2>
+        <p>
+          Sie haben Freude am Singen und möchten Teil unserer lebendigen Chorgemeinschaft werden? 
+          Wir freuen uns über neue Mitglieder! Schauen Sie einfach bei einer unserer Proben vorbei 
+          – ein Schnuppern ist jederzeit möglich.
+        </p>
+        <div class="cta">
+          <p>Neue Sängerinnen und Sänger sind herzlich willkommen!</p>
+        </div>
+      </section>
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .choir-page {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .hero-section {
+    text-align: center;
+    padding: 2rem 0 3rem;
+    border-bottom: 3px solid hsl(var(--primary));
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: hsl(var(--primary));
+    margin-bottom: 0.5rem;
+  }
+
+  .tagline {
+    font-size: 1.3rem;
+    color: #666;
+    font-style: italic;
+  }
+
+  section {
+    margin: 3rem 0;
+  }
+
+  h2 {
+    font-size: 2rem;
+    color: hsl(var(--primary));
+    margin-bottom: 1.5rem;
+    border-left: 4px solid hsl(var(--secondary));
+    padding-left: 1rem;
+  }
+
+  .about-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .repertoire-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .repertoire-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .repertoire-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .repertoire-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: hsl(var(--primary-dark));
+  }
+
+  .info-box {
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--secondary) / 0.1));
+    padding: 2rem;
+    border-radius: 10px;
+    border-left: 5px solid hsl(var(--primary));
+  }
+
+  .info-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  .info-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .info-item strong {
+    min-width: 80px;
+    color: hsl(var(--primary));
+  }
+
+  .join-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .cta {
+    background: var(--accent-gradient);
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .cta p {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .tagline {
+      font-size: 1.1rem;
+    }
+
+    .repertoire-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

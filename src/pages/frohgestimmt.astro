@@ -1,0 +1,257 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Frohgestimmt">
+  <div class="container">
+    <article class="choir-page">
+      <div class="hero-section">
+        <h1>Frohgestimmt</h1>
+        <p class="tagline">Seit 1965 eine feste Institution im kulturellen Leben Tarmstedts</p>
+      </div>
+
+      <section class="about-section">
+        <h2>Über uns</h2>
+        <p>
+          Der Chor "Froh gestimmt" aus Tarmstedt besteht seit dem 5. Mai 1965 und ist eine 
+          feste Institution im kulturellen Leben der Gemeinde. Seit fast 60 Jahren bringen 
+          wir Menschen zusammen, die die Freude am Gesang teilen.
+        </p>
+        <p>
+          Jeden Montagabend um 20 Uhr treffen sich die engagierten Sängerinnen und Sänger 
+          im Deutschen Roten Kreuz in Tarmstedt, um gemeinsam zu proben und die Freude am 
+          Gesang zu teilen. Unsere lange Tradition ist geprägt von Gemeinschaft, Leidenschaft 
+          und der Liebe zur Musik.
+        </p>
+      </section>
+
+      <section class="repertoire-section">
+        <h2>Unser Repertoire</h2>
+        <p>
+          Das Repertoire des Chors umfasst eine vielfältige Auswahl an Liedern aus dem 
+          deutschsprachigen Raum. Von klassischen Volksliedern über zeitgenössische Chormusik 
+          bis hin zu bekannten Schlagern – der Chor "Froh gestimmt" bringt mit seinem 
+          abwechslungsreichen Programm die Herzen seines Publikums zum Klingen.
+        </p>
+        <div class="repertoire-grid">
+          <div class="repertoire-card">
+            <h3>🎶 Volkslieder</h3>
+            <p>Klassische deutsche Volkslieder mit Tradition</p>
+          </div>
+          <div class="repertoire-card">
+            <h3>🎹 Zeitgenössische Chormusik</h3>
+            <p>Moderne Chorwerke aus dem deutschsprachigen Raum</p>
+          </div>
+          <div class="repertoire-card">
+            <h3>🎸 Schlager</h3>
+            <p>Bekannte Schlager, die die Herzen berühren</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="history-section">
+        <h2>Unsere Geschichte</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <strong>05.05.1965</strong>
+            <p>Gründung des Chors "Froh gestimmt" in Tarmstedt</p>
+          </div>
+          <div class="timeline-item">
+            <strong>Heute</strong>
+            <p>Fast 60 Jahre Chorgesang und kulturelles Engagement in der Gemeinde</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="rehearsal-section">
+        <h2>Proben</h2>
+        <div class="info-box">
+          <div class="info-item">
+            <strong>Wann:</strong>
+            <span>Jeden Montag um 20:00 Uhr</span>
+          </div>
+          <div class="info-item">
+            <strong>Wo:</strong>
+            <span>Deutsches Rotes Kreuz in Tarmstedt</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="join-section">
+        <h2>Mitmachen</h2>
+        <p>
+          Sie möchten Teil dieser traditionsreichen Chorgemeinschaft werden? Wir freuen uns 
+          über neue Mitglieder, die mit uns die Freude am Gesang teilen möchten. Besuchen Sie 
+          uns einfach bei einer Probe – ein Schnuppern ist jederzeit herzlich willkommen!
+        </p>
+        <div class="cta">
+          <p>Gemeinsam die Freude am Gesang teilen – seit 1965!</p>
+        </div>
+      </section>
+    </article>
+  </div>
+</Layout>
+
+<style>
+  .choir-page {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .hero-section {
+    text-align: center;
+    padding: 2rem 0 3rem;
+    border-bottom: 3px solid hsl(var(--primary));
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: hsl(var(--primary));
+    margin-bottom: 0.5rem;
+  }
+
+  .tagline {
+    font-size: 1.3rem;
+    color: #666;
+    font-style: italic;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  section {
+    margin: 3rem 0;
+  }
+
+  h2 {
+    font-size: 2rem;
+    color: hsl(var(--primary));
+    margin-bottom: 1.5rem;
+    border-left: 4px solid hsl(var(--secondary));
+    padding-left: 1rem;
+  }
+
+  .about-section p,
+  .repertoire-section > p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .repertoire-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .repertoire-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .repertoire-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .repertoire-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: hsl(var(--primary-dark));
+  }
+
+  .timeline {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .timeline-item {
+    padding: 1.5rem;
+    border-left: 3px solid hsl(var(--primary));
+    margin-bottom: 1.5rem;
+  }
+
+  .timeline-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .timeline-item strong {
+    display: block;
+    font-size: 1.2rem;
+    color: hsl(var(--primary));
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-item p {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .info-box {
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--secondary) / 0.1));
+    padding: 2rem;
+    border-radius: 10px;
+    border-left: 5px solid hsl(var(--primary));
+  }
+
+  .info-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+
+  .info-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .info-item strong {
+    min-width: 80px;
+    color: hsl(var(--primary));
+  }
+
+  .join-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .cta {
+    background: var(--accent-gradient);
+    color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .cta p {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .tagline {
+      font-size: 1.1rem;
+    }
+
+    .repertoire-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
