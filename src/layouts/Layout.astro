@@ -16,7 +16,7 @@ const currentPath = Astro.url.pathname;
 			content="Froh-Gestimmt SG Tarmstedt e.V. - Gemeinnützige Organisation mit den Chören Chor4Fun und Froh-Gestimmt aus Tarmstedt"
 		/>
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/jpeg" href="/images/logo.jpeg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title} - Froh-Gestimmt SG Tarmstedt e.V.</title>
 	</head>
@@ -129,6 +129,24 @@ const currentPath = Astro.url.pathname;
 		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
+		position: relative;
+	}
+
+	body::before {
+		content: "";
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 80%;
+		height: 80%;
+		background-image: url("/images/logo.jpeg");
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: contain;
+		opacity: 0.05;
+		z-index: -1;
+		pointer-events: none;
 	}
 
 	.container {
