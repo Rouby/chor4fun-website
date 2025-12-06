@@ -1,0 +1,112 @@
+---
+import Layout from "../layouts/Layout.astro";
+import BoardMember from "../components/BoardMember.astro";
+---
+
+<Layout title="Der Vorstand">
+    <div class="container">
+        <div class="page-header">
+            <h1>Der Vorstand</h1>
+            <p class="intro">
+                Unser Vorstand leitet die Geschicke des Vereins mit Engagement
+                und Herzblut. Er setzt sich zusammen aus dem geschäftsführenden
+                Vorstand und dem erweiterten Vorstand.
+            </p>
+        </div>
+
+        <section class="board-section">
+            <h2>Geschäftsführender Vorstand</h2>
+            <div class="member-grid">
+                <BoardMember
+                    name="Dunja Born"
+                    role="Vorsitzende/r"
+                    image="/images/vorstand-dunja.jpg"
+                    description="Leitet den Verein und repräsentiert ihn nach außen (§ 26 BGB Vertretung)."
+                />
+                <BoardMember
+                    name="Yvonne Börsdamm"
+                    role="Stellv. Vorsitzende/r"
+                    image="/images/vorstand-yvonne.jpg"
+                    description="Unterstützt den Vorsitzenden und vertritt ihn (§ 26 BGB Vertretung)."
+                />
+                <BoardMember
+                    name="Helga Margret Burke"
+                    role="Schriftführer/in"
+                    image="/images/vorstand-helga.jpg"
+                    description="Protokolliert Sitzungen und kümmert sich um den Schriftverkehr."
+                />
+                <BoardMember
+                    name="Yvonne Börsdamm"
+                    role="Kassenwart/in"
+                    image="/images/vorstand-yvonne.jpg"
+                    description="Verwaltet die Finanzen des Vereins und kümmert sich um die Mitgliederverwaltung."
+                />
+            </div>
+        </section>
+
+        <section class="board-section">
+            <h2>Erweiterter Vorstand</h2>
+            <div class="member-grid">
+                <BoardMember
+                    name="Erica Rosenbrock"
+                    role="Beisitzer/in (Froh-Gestimmt)"
+                    description="Vertritt die Interessen der Chorgattung Froh-Gestimmt im Vorstand."
+                />
+            </div>
+        </section>
+    </div>
+</Layout>
+
+<style>
+    .page-header {
+        text-align: center;
+        margin-bottom: 4rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    h1 {
+        font-size: 3rem;
+        color: hsl(var(--primary));
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+
+    .intro {
+        font-size: 1.2rem;
+        color: #555;
+        line-height: 1.6;
+    }
+
+    .board-section {
+        margin-bottom: 5rem;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 2rem;
+        color: var(--text-color);
+        margin-bottom: 3rem;
+        position: relative;
+        padding-bottom: 1rem;
+    }
+
+    h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background: var(--accent-gradient);
+        border-radius: 2px;
+    }
+
+    .member-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+</style>

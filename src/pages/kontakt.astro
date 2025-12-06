@@ -1,0 +1,144 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Kontakt">
+    <div class="container">
+        <h1>Kontakt</h1>
+        <p class="intro">Wir freuen uns, von Ihnen zu hören!</p>
+
+        <div class="contact-grid">
+            <div class="card contact-info">
+                <h2>Vorstand</h2>
+                <div class="person">
+                    <h3>1. Vorsitzende</h3>
+                    <p class="name">Dunja Born</p>
+                    <p class="phone">
+                        <strong>Tel:</strong>
+                        <a href="tel:015144516697">0151 44516697</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="card rehearsal-info">
+                <h2>Übungszeiten</h2>
+
+                <div class="choir-section">
+                    <h3>Chor Froh-Gestimmt</h3>
+                    <p class="time">Montags um 20:00 Uhr</p>
+                    <p class="location">
+                        <strong>DRK Tarmstedt</strong><br />
+                        Bahnhofstraße 8a, 27412 Tarmstedt
+                    </p>
+                </div>
+
+                <div class="choir-section">
+                    <h3>Chor4fun</h3>
+                    <p class="time">Mittwochs um 20:00 Uhr</p>
+                    <p class="location">
+                        <strong>Feuerwehrhaus Kirchtimke</strong><br />
+                        Hauptstraße 28, 27412 Kirchtimke
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    h1 {
+        font-size: 2.5rem;
+        color: hsl(var(--primary));
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+
+    .intro {
+        text-align: center;
+        margin-bottom: 3rem;
+        font-size: 1.2rem;
+        color: #666;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .contact-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .card {
+        background: var(--card-bg);
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        color: hsl(var(--primary-dark));
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 2px solid hsl(var(--primary-light));
+        padding-bottom: 0.5rem;
+        display: inline-block;
+    }
+
+    h3 {
+        color: hsl(var(--primary));
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .person,
+    .choir-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .person:last-child,
+    .choir-section:last-child {
+        margin-bottom: 0;
+    }
+
+    .name {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+
+    .phone a {
+        color: hsl(var(--secondary));
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .phone a:hover {
+        text-decoration: underline;
+    }
+
+    .time {
+        font-weight: 600;
+        color: #444;
+        margin-bottom: 0.25rem;
+    }
+
+    .location {
+        color: #666;
+        line-height: 1.4;
+    }
+</style>

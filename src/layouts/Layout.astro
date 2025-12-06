@@ -11,21 +11,67 @@ const currentPath = Astro.url.pathname;
 <html lang="de">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Froh-Gestimmt - Gemeinnützige Organisation mit den Chören Chor4Fun und Froh-Gestimmt aus Tarmstedt" />
+		<meta
+			name="description"
+			content="Froh-Gestimmt SG Tarmstedt e.V. - Gemeinnützige Organisation mit den Chören Chor4Fun und Froh-Gestimmt aus Tarmstedt"
+		/>
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title} - Froh-Gestimmt</title>
+		<title>{title} - Froh-Gestimmt SG Tarmstedt e.V.</title>
 	</head>
 	<body>
 		<header>
 			<div class="container">
 				<div class="header-content">
-					<h1 class="logo">Froh-Gestimmt</h1>
+					<h1 class="logo">Froh-Gestimmt SG Tarmstedt e.V.</h1>
 					<nav>
-						<a href="/" class={currentPath === '/' ? 'active' : ''}>Home</a>
-						<a href="/chor4fun" class={currentPath === '/chor4fun' ? 'active' : ''}>Chor4Fun</a>
-						<a href="/frohgestimmt" class={currentPath === '/frohgestimmt' ? 'active' : ''}>Froh-Gestimmt</a>
+						<a href="/" class={currentPath === "/" ? "active" : ""}
+							>Home</a
+						>
+						<a
+							href="/chor4fun"
+							class={currentPath === "/chor4fun" ? "active" : ""}
+							>Chor4Fun</a
+						>
+						<a
+							href="/frohgestimmt"
+							class={currentPath === "/frohgestimmt"
+								? "active"
+								: ""}>Froh-Gestimmt</a
+						>
+						<a
+							href="/vorstand"
+							class={currentPath === "/vorstand" ? "active" : ""}
+							>Vorstand</a
+						>
+						<a
+							href="/chorleitung"
+							class={currentPath === "/chorleitung"
+								? "active"
+								: ""}>Chorleitung</a
+						>
+						<a
+							href="/geschichte"
+							class={currentPath === "/geschichte"
+								? "active"
+								: ""}>Geschichte</a
+						>
+						<a
+							href="/medien"
+							class={currentPath === "/medien" ? "active" : ""}
+							>Medien</a
+						>
+						<a
+							href="/termine"
+							class={currentPath === "/termine" ? "active" : ""}
+							>Termine</a
+						>
+						<a
+							href="/kontakt"
+							class={currentPath === "/kontakt" ? "active" : ""}
+							>Kontakt</a
+						>
 					</nav>
 				</div>
 			</div>
@@ -35,60 +81,69 @@ const currentPath = Astro.url.pathname;
 		</main>
 		<footer>
 			<div class="container">
-				<p>&copy; 2024 Froh-Gestimmt - Gemeinnützige Organisation</p>
+				<div class="footer-content">
+					<div class="footer-links">
+						<a href="/impressum">Impressum</a>
+						<a href="/datenschutz">Datenschutz</a>
+						<a href="/kontakt">Kontakt</a>
+					</div>
+					<p>
+						Froh-Gestimmt SG Tarmstedt e.V. - Gemeinnützige
+						Organisation
+					</p>
+				</div>
 			</div>
 		</footer>
 	</body>
 </html>
 <style is:global>
 	:root {
-		--primary: 145, 70, 45;
-		--primary-light: 130, 75, 65;
-		--primary-dark: 155, 65, 35;
-		--secondary: 120, 60, 50;
+		--primary: 158 60% 25%;
+		--primary-light: 158 45% 55%;
+		--primary-dark: 158 70% 15%;
+		--secondary: 100 40% 45%;
 		--accent-gradient: linear-gradient(
 			135deg,
 			hsl(var(--primary)),
-			hsl(var(--primary-light)) 50%,
-			hsl(var(--secondary)) 100%
+			hsl(var(--secondary))
 		);
-		--bg-color: #fafffe;
-		--text-color: #2d3e2d;
+		--bg-color: #f9fcf9;
+		--text-color: #242c24;
 		--card-bg: #ffffff;
 	}
-	
+
 	* {
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
 	}
-	
+
 	html {
-		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 		background: var(--bg-color);
 		color: var(--text-color);
 		line-height: 1.6;
 	}
-	
+
 	body {
 		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
 	}
-	
+
 	.container {
 		max-width: 1200px;
 		margin: 0 auto;
 		padding: 0 2rem;
 	}
-	
+
 	header {
 		background: var(--accent-gradient);
 		color: white;
 		padding: 1.5rem 0;
-		box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 	}
-	
+
 	.header-content {
 		display: flex;
 		justify-content: space-between;
@@ -96,19 +151,19 @@ const currentPath = Astro.url.pathname;
 		flex-wrap: wrap;
 		gap: 1rem;
 	}
-	
+
 	.logo {
 		font-size: 2rem;
 		font-weight: 700;
 		margin: 0;
 		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 	}
-	
+
 	nav {
 		display: flex;
 		gap: 2rem;
 	}
-	
+
 	nav a {
 		color: white;
 		text-decoration: none;
@@ -118,17 +173,23 @@ const currentPath = Astro.url.pathname;
 		transition: background 0.3s ease;
 		text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 	}
-	
+
 	nav a:hover,
 	nav a.active {
 		background: rgba(255, 255, 255, 0.3);
 	}
-	
+
+	nav {
+		flex-wrap: wrap;
+		gap: 1rem;
+		justify-content: center;
+	}
+
 	main {
 		flex: 1;
 		padding: 3rem 0;
 	}
-	
+
 	footer {
 		background: #333;
 		color: white;
@@ -136,22 +197,50 @@ const currentPath = Astro.url.pathname;
 		padding: 2rem 0;
 		margin-top: auto;
 	}
-	
+
 	footer p {
 		margin: 0;
+		opacity: 0.8;
+		font-size: 0.9rem;
 	}
-	
+
+	.footer-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.footer-links {
+		display: flex;
+		gap: 1.5rem;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.footer-links a {
+		color: white;
+		text-decoration: none;
+		font-size: 0.95rem;
+		transition: color 0.2s;
+	}
+
+	.footer-links a:hover {
+		text-decoration: underline;
+		color: var(--secondary);
+	}
+
 	@media (max-width: 768px) {
 		.header-content {
 			flex-direction: column;
 			text-align: center;
 		}
-		
+
 		nav {
 			flex-direction: column;
 			gap: 0.5rem;
 		}
-		
+
 		.container {
 			padding: 0 1rem;
 		}

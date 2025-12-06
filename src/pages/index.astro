@@ -1,12 +1,15 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
 ---
 
 <Layout title="Startseite">
   <div class="container">
     <section class="hero">
-      <h1>Willkommen bei <span class="text-gradient">Froh-Gestimmt</span></h1>
+      <h1>
+        Willkommen bei <span class="text-gradient"
+          >Froh-Gestimmt SG Tarmstedt e.V.</span>
+      </h1>
       <p class="intro">
         Gemeinnützige Organisation für Chorgesang in Tarmstedt und Umgebung
       </p>
@@ -15,9 +18,10 @@ import Card from '../components/Card.astro';
     <section class="about">
       <h2>Über uns</h2>
       <p>
-        Unter dem Dach der gemeinnützigen Organisation "Froh-Gestimmt" vereinen sich zwei 
-        lebendige Chöre, die mit Leidenschaft und Freude die Chormusik in der Region pflegen. 
-        Beide Chöre bieten ein vielfältiges Repertoire und heißen neue Mitglieder herzlich willkommen!
+        Unter dem Dach der gemeinnützigen Organisation "Froh-Gestimmt SG
+        Tarmstedt e.V." vereinen sich zwei lebendige Chöre, die mit Leidenschaft
+        und Freude die Chormusik in der Region pflegen. Beide Chöre bieten ein
+        vielfältiges Repertoire und heißen neue Mitglieder herzlich willkommen!
       </p>
     </section>
 
@@ -40,8 +44,8 @@ import Card from '../components/Card.astro';
     <section class="join">
       <h2>Mitmachen</h2>
       <p>
-        Sie singen gerne und möchten Teil unserer Chorgemeinschaft werden? 
-        Besuchen Sie uns einfach bei einer Probe - neue Sängerinnen und Sänger 
+        Sie singen gerne und möchten Teil unserer Chorgemeinschaft werden?
+        Besuchen Sie uns einfach bei einer Probe - neue Sängerinnen und Sänger
         sind jederzeit herzlich willkommen!
       </p>
     </section>
@@ -101,7 +105,11 @@ import Card from '../components/Card.astro';
   }
 
   .join {
-    background: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--secondary) / 0.1));
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary) / 0.1),
+      hsl(var(--secondary) / 0.1)
+    );
     padding: 3rem;
     border-radius: 10px;
     text-align: center;

@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Chor4Fun">
@@ -8,19 +8,26 @@ import Layout from '../layouts/Layout.astro';
       <div class="hero-section">
         <h1>Chor4Fun</h1>
         <p class="tagline">Leidenschaft für vielfältige Musik seit 2016</p>
+        <img
+          src="/images/chor-chor4fun-imgwide.jpg"
+          alt="Chor4Fun - Unser Chor"
+          class="hero-image"
+        />
       </div>
 
       <section class="about-section">
         <h2>Über uns</h2>
         <p>
-          Der Chor4fun besteht seit 2016 und widmet sich leidenschaftlich der Vielfalt der Musik. 
-          Unser Repertoire reicht von mitreißendem Gospel über eingängige Popsongs bis hin zu 
-          berührenden deutschsprachigen Liedern.
+          Der Chor4fun besteht seit 2016 und widmet sich leidenschaftlich der
+          Vielfalt der Musik. Unser Repertoire reicht von mitreißendem Gospel
+          über eingängige Popsongs bis hin zu berührenden deutschsprachigen
+          Liedern.
         </p>
         <p>
-          Wir präsentieren unsere Musik bei verschiedenen Auftritten, zum Beispiel in der Kirche 
-          und in der KGS Tarmstedt. Ob festliche Anlässe oder gesellige Veranstaltungen – 
-          wir bringen Freude und Begeisterung für die Musik zu unserem Publikum.
+          Wir präsentieren unsere Musik bei verschiedenen Auftritten, zum
+          Beispiel in der Kirche und in der KGS Tarmstedt. Ob festliche Anlässe
+          oder gesellige Veranstaltungen – wir bringen Freude und Begeisterung
+          für die Musik zu unserem Publikum.
         </p>
       </section>
 
@@ -51,17 +58,33 @@ import Layout from '../layouts/Layout.astro';
           </div>
           <div class="info-item">
             <strong>Wo:</strong>
-            <span>Dorfgemeinschaftshaus in Ostertimke</span>
+            <span>Feuerwehrhaus, Hauptstraße 28, 27412 Kirchtimke</span>
           </div>
+        </div>
+        <div class="map-container">
+          <iframe
+            src="https://maps.google.com/maps?q=Hauptstraße+28+27412+Kirchtimke&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="350"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </section>
 
       <section class="join-section">
         <h2>Mitmachen</h2>
+        <img
+          src="/images/chor-chor4fun-imgnear.jpg"
+          alt="Chor4Fun - Gemeinsam Singen"
+          class="content-image"
+        />
         <p>
-          Sie haben Freude am Singen und möchten Teil unserer lebendigen Chorgemeinschaft werden? 
-          Wir freuen uns über neue Mitglieder! Schauen Sie einfach bei einer unserer Proben vorbei 
-          – ein Schnuppern ist jederzeit möglich.
+          Sie haben Freude am Singen und möchten Teil unserer lebendigen
+          Chorgemeinschaft werden? Wir freuen uns über neue Mitglieder! Schauen
+          Sie einfach bei einer unserer Proben vorbei – ein Schnuppern ist
+          jederzeit möglich.
         </p>
         <div class="cta">
           <p>Neue Sängerinnen und Sänger sind herzlich willkommen!</p>
@@ -126,7 +149,9 @@ import Layout from '../layouts/Layout.astro';
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   .repertoire-card:hover {
@@ -141,7 +166,11 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .info-box {
-    background: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--secondary) / 0.1));
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary) / 0.1),
+      hsl(var(--secondary) / 0.1)
+    );
     padding: 2rem;
     border-radius: 10px;
     border-left: 5px solid hsl(var(--primary));
@@ -199,5 +228,34 @@ import Layout from '../layouts/Layout.astro';
     .repertoire-grid {
       grid-template-columns: 1fr;
     }
+    .repertoire-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .hero-image {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    margin-top: 2rem;
+  }
+
+  .content-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin: 1rem auto 2rem;
+    display: block;
+  }
+
+  .map-container {
+    margin-top: 2rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 </style>

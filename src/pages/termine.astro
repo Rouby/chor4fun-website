@@ -1,0 +1,174 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const events = [
+    {
+        date: "2026-01-12",
+        title: "Jahreshauptversammlung",
+    },
+];
+
+// Helper to format date
+const getDay = (dateStr: string) => {
+    const date = new Date(dateStr);
+    return date.getDate().toString().padStart(2, "0");
+};
+
+const getMonth = (dateStr: string) => {
+    const date = new Date(dateStr);
+    return date.toLocaleString("de-DE", { month: "short" });
+};
+
+const getYear = (dateStr: string) => {
+    const date = new Date(dateStr);
+    return date.getFullYear();
+};
+
+const getWeekday = (dateStr: string) => {
+    const date = new Date(dateStr);
+    return date.toLocaleString("de-DE", { weekday: "long" });
+};
+---
+
+<Layout title="Termine">
+    <div class="container">
+        <h1>Termine</h1>
+        <p class="intro">Unsere nächsten Auftritte und Veranstaltungen.</p>
+
+        <div class="events-grid">
+            {
+                events.map((event) => (
+                    <div class="event-card">
+                        <div class="date-badge">
+                            <span class="day">{getDay(event.date)}</span>
+                            <span class="month">{getMonth(event.date)}</span>
+                            <span class="year">{getYear(event.date)}</span>
+                        </div>
+                        <div class="event-details">
+                            <span class="weekday">
+                                {getWeekday(event.date)}
+                            </span>
+                            <h2>{event.title}</h2>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+
+        <div class="placeholder">
+            <p>Weitere Termine folgen in Kürze.</p>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    h1 {
+        font-size: 2.5rem;
+        color: hsl(var(--primary));
+        margin-bottom: 0.5rem;
+    }
+
+    .intro {
+        margin-bottom: 3rem;
+        font-size: 1.1rem;
+    }
+
+    .events-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        max-width: 800px;
+    }
+
+    .event-card {
+        background: var(--card-bg);
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        display: flex;
+        overflow: hidden;
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .event-card:hover {
+        transform: translateX(5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        border-left: 4px solid hsl(var(--primary));
+    }
+
+    .date-badge {
+        background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+        color: hsl(var(--primary-dark));
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-width: 100px;
+        text-align: center;
+        border-right: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .date-badge .day {
+        font-size: 2rem;
+        font-weight: 800;
+        line-height: 1;
+        color: hsl(var(--primary));
+    }
+
+    .date-badge .month {
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        margin-top: 0.2rem;
+    }
+
+    .date-badge .year {
+        font-size: 0.75rem;
+        opacity: 0.8;
+    }
+
+    .event-details {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1;
+    }
+
+    .event-details .weekday {
+        color: hsl(var(--primary));
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .event-details h2 {
+        font-size: 1.3rem;
+        color: var(--text-color);
+        margin: 0;
+        line-height: 1.3;
+    }
+
+    .placeholder {
+        margin-top: 3rem;
+        padding: 1rem;
+        color: #666;
+        font-style: italic;
+    }
+
+    @media (max-width: 600px) {
+        .event-card {
+            flex-direction: row; /* Keep row for small screens too if possible, otherwise column */
+        }
+
+        .date-badge {
+            padding: 1rem;
+            min-width: 80px;
+        }
+    }
+</style>

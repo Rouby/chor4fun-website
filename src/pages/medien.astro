@@ -1,0 +1,385 @@
+---
+import Layout from "../layouts/Layout.astro";
+import fs from "node:fs";
+import path from "node:path";
+
+// Logic to read and group press images
+const pressDir = path.join(process.cwd(), "public", "images", "press");
+let articles = [];
+
+try {
+    // Ensure directory exists
+    if (fs.existsSync(pressDir)) {
+        const files = fs
+            .readdirSync(pressDir)
+            .filter((f) => /\.(jpg|jpeg|png|webp)$/i.test(f));
+
+        const groups = {};
+
+        files.forEach((file) => {
+            // Expected format: press-YYYY-MM-DD-title[-partX].ext
+            // Example: press-2025-10-10-zevener-zeitung-part1.jpg
+            const match = file.match(
+                /^press-(\d{4}-[0-9x]{2}-[0-9x]{2})-(.+?)((-part\d+)?)\.(.+)$/i,
+            );
+            if (match) {
+                const [_, dateStr, titleSlug, partSuffix, partNum, ext] = match;
+                // Key to group by: date + title
+                const key = `${dateStr}-${titleSlug}`;
+
+                if (!groups[key]) {
+                    groups[key] = {
+                        rawDate: dateStr,
+                        title: titleSlug
+                            .split("-")
+                            .map(
+                                (word) =>
+                                    word.charAt(0).toUpperCase() +
+                                    word.slice(1),
+                            )
+                            .join(" "),
+                        images: [],
+                    };
+                }
+
+                groups[key].images.push({
+                    src: `/images/press/${file}`,
+                    part: partNum ? parseInt(partNum.replace("-part", "")) : 1,
+                    filename: file,
+                });
+            }
+        });
+
+        articles = Object.values(groups).sort((a, b) => {
+            // Sort by date descending
+            // Replace 'x' with '0' for comparison purposes
+            const dateA = a.rawDate.replace(/x/g, "0");
+            const dateB = b.rawDate.replace(/x/g, "0");
+            return dateB.localeCompare(dateA);
+        });
+
+        // Sort images within articles by part number
+        articles.forEach((article) => {
+            article.images.sort((a, b) => a.part - b.part);
+        });
+    }
+} catch (e) {
+    console.error("Error loading press images:", e);
+}
+
+function formatDate(dateStr) {
+    if (dateStr.includes("xx")) {
+        return dateStr.substring(0, 4); // Just returning the year if month/day is unknown
+    }
+    const [year, month, day] = dateStr.split("-");
+    const monthNames = [
+        "Januar",
+        "Februar",
+        "März",
+        "April",
+        "Mai",
+        "Juni",
+        "Juli",
+        "August",
+        "September",
+        "Oktober",
+        "November",
+        "Dezember",
+    ];
+    // return `${day}. ${monthNames[parseInt(month) - 1]} ${year}`;
+    return `${day}.${month}.${year}`;
+}
+---
+
+<Layout title="Medienpräsenz">
+    <div class="page-header">
+        <div class="container">
+            <h1>Medien & Presse</h1>
+            <p class="subtitle">
+                Berichte, Artikel und Veröffentlichungen über unseren Chor
+            </p>
+        </div>
+    </div>
+
+    <div class="container content-section">
+        {
+            articles.length === 0 ? (
+                <div class="empty-state">
+                    <p>Aktuell sind keine Presseberichte online verfügbar.</p>
+                </div>
+            ) : (
+                <div class="timeline">
+                    {articles.map((article) => (
+                        <div class="timeline-item">
+                            <div class="timeline-marker" />
+                            <div class="timeline-date-label">
+                                {formatDate(article.rawDate)}
+                            </div>
+                            <div class="timeline-content">
+                                <article class="press-card">
+                                    <header class="card-header">
+                                        <h2>{article.title}</h2>
+                                    </header>
+                                    <div class="card-content">
+                                        {article.images.map((img) => (
+                                            <div class="image-wrapper">
+                                                <img
+                                                    src={img.src}
+                                                    alt={`Bericht: ${article.title} - Teil ${img.part}`}
+                                                    loading="lazy"
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            )
+        }
+    </div>
+</Layout>
+
+<style>
+    /* Page Header Styles */
+    .page-header {
+        background: linear-gradient(
+            135deg,
+            hsl(var(--primary) / 0.1),
+            hsl(var(--secondary) / 0.1)
+        );
+        padding: 4rem 1rem;
+        text-align: center;
+        margin-bottom: 3rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .page-header h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        color: hsl(var(--primary));
+        margin-bottom: 0.5rem;
+        line-height: 1.2;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+        color: rgba(36, 44, 36, 0.7);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* Content Layout */
+    .content-section {
+        padding-bottom: 4rem;
+    }
+
+    /* Timeline Styles */
+    .timeline {
+        position: relative;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem 0;
+    }
+
+    /* The vertical line */
+    .timeline::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 4px;
+        background: linear-gradient(
+            to bottom,
+            hsl(var(--primary)),
+            hsl(var(--secondary))
+        );
+        border-radius: 2px;
+        transform: translateX(-50%);
+    }
+
+    .timeline-item {
+        position: relative;
+        margin-bottom: 4rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .timeline-item:last-child {
+        margin-bottom: 0;
+    }
+
+    /* Marker on the line */
+    .timeline-marker {
+        position: absolute;
+        left: 50%;
+        top: 2rem; /* Align with the top of the card roughly */
+        width: 20px;
+        height: 20px;
+        background: white;
+        border: 4px solid hsl(var(--primary));
+        border-radius: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.5);
+    }
+
+    /* Date Label */
+    .timeline-date-label {
+        position: absolute;
+        left: 50%;
+        top: 1.8rem;
+        transform: translate(-130%, 0);
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: hsl(var(--primary));
+        background: white;
+        padding: 0.35rem 1rem;
+        border-radius: 24px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+        width: auto;
+        min-width: 120px;
+        text-align: center;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    /* Content Area */
+    .timeline-content {
+        width: 45%;
+        margin-left: auto; /* Pushes to right by default */
+        padding-left: 2rem;
+        box-sizing: border-box;
+    }
+
+    /* Alternating logic (Desktop only) */
+    .timeline-item:nth-child(even) .timeline-content {
+        margin-left: 0;
+        margin-right: auto; /* Pushes to left */
+        padding-left: 0;
+        padding-right: 2rem;
+    }
+
+    .timeline-item:nth-child(even) .timeline-date-label {
+        transform: translate(30%, 0);
+    }
+
+    /* Press Card Styles */
+    .press-card {
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow:
+            0 4px 6px -1px rgba(0, 0, 0, 0.1),
+            0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .press-card:hover {
+        transform: translateY(-3px);
+        box-shadow:
+            0 10px 15px -3px rgba(0, 0, 0, 0.1),
+            0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    .card-header {
+        padding: 1.5rem;
+        background: white;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        position: relative;
+    }
+
+    .card-header h2 {
+        font-size: 1.5rem;
+        line-height: 1.3;
+        color: var(--text-color);
+        margin: 0;
+        font-weight: 700;
+    }
+
+    .card-content {
+        padding: 0;
+        background: #f9f9f9;
+        flex-grow: 1;
+    }
+
+    .image-wrapper {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .image-wrapper:last-child {
+        border-bottom: none;
+    }
+
+    .image-wrapper img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: opacity 0.3s ease;
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 4rem;
+        color: rgba(36, 44, 36, 0.7);
+        font-size: 1.1rem;
+        background: #f0f0f0;
+        border-radius: 8px;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+        .timeline::before {
+            left: 20px;
+        }
+
+        .timeline-item {
+            flex-direction: column;
+            align-items: flex-start;
+            margin-left: 20px;
+            width: calc(100% - 20px);
+        }
+
+        .timeline-marker {
+            left: 20px; /* On the line */
+            transform: translateX(-50%);
+            top: 0;
+        }
+
+        .timeline-content {
+            width: 100%;
+            margin-left: 0;
+            padding-left: 2rem;
+            padding-right: 0;
+            margin-top: 2rem;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: 0;
+            padding-right: 0;
+            padding-left: 2rem;
+        }
+
+        .timeline-date-label {
+            position: absolute;
+            left: 40px; /* Right of the marker */
+            top: -5px;
+            transform: none !important; /* Override both normal and nth-child */
+            text-align: left;
+            width: auto;
+        }
+
+        .page-header h1 {
+            font-size: 2.25rem;
+        }
+    }
+</style>
