@@ -11,21 +11,21 @@ const currentPath = Astro.url.pathname;
 <html lang="de">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Frohgestimmt - Gemeinnützige Organisation mit den Chören Chor4Fun und Frohgestimmt aus Tarmstedt" />
+		<meta name="description" content="Froh-Gestimmt - Gemeinnützige Organisation mit den Chören Chor4Fun und Froh-Gestimmt aus Tarmstedt" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title} - Frohgestimmt</title>
+		<title>{title} - Froh-Gestimmt</title>
 	</head>
 	<body>
 		<header>
 			<div class="container">
 				<div class="header-content">
-					<h1 class="logo">Frohgestimmt</h1>
+					<h1 class="logo">Froh-Gestimmt</h1>
 					<nav>
 						<a href="/" class={currentPath === '/' ? 'active' : ''}>Home</a>
 						<a href="/chor4fun" class={currentPath === '/chor4fun' ? 'active' : ''}>Chor4Fun</a>
-						<a href="/frohgestimmt" class={currentPath === '/frohgestimmt' ? 'active' : ''}>Frohgestimmt</a>
+						<a href="/frohgestimmt" class={currentPath === '/frohgestimmt' ? 'active' : ''}>Froh-Gestimmt</a>
 					</nav>
 				</div>
 			</div>
@@ -35,7 +35,7 @@ const currentPath = Astro.url.pathname;
 		</main>
 		<footer>
 			<div class="container">
-				<p>&copy; 2024 Frohgestimmt - Gemeinnützige Organisation</p>
+				<p>&copy; 2024 Froh-Gestimmt - Gemeinnützige Organisation</p>
 			</div>
 		</footer>
 	</body>
@@ -101,6 +101,7 @@ const currentPath = Astro.url.pathname;
 		font-size: 2rem;
 		font-weight: 700;
 		margin: 0;
+		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 	}
 	
 	nav {
@@ -115,11 +116,12 @@ const currentPath = Astro.url.pathname;
 		padding: 0.5rem 1rem;
 		border-radius: 5px;
 		transition: background 0.3s ease;
+		text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 	}
 	
 	nav a:hover,
 	nav a.active {
-		background: rgba(255, 255, 255, 0.2);
+		background: rgba(255, 255, 255, 0.3);
 	}
 	
 	main {
