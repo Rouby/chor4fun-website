@@ -99,6 +99,27 @@ const currentPath = pathname === "/" ? pathname : pathname.replace(/\/$/, "");
 							menuToggle.classList.toggle("open");
 						});
 					}
+
+					// Highlight active navigation item
+					const navLinks =
+						document.querySelectorAll("nav#main-nav a");
+					const currentPath = window.location.pathname;
+
+					const normalize = (path) => {
+						if (path === "/" || path === "") return "/";
+						return path.replace(/\/$/, "");
+					};
+
+					navLinks.forEach((link) => {
+						const href = link.getAttribute("href");
+						if (href) {
+							if (normalize(currentPath) === normalize(href)) {
+								link.classList.add("active");
+							} else {
+								link.classList.remove("active");
+							}
+						}
+					});
 				});
 			</script>
 		</header>
