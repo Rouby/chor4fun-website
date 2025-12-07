@@ -25,7 +25,16 @@ const currentPath = Astro.url.pathname;
 			<div class="container">
 				<div class="header-content">
 					<h1 class="logo">Froh-Gestimmt SG Tarmstedt e.V.</h1>
-					<nav>
+					<button
+						class="menu-toggle"
+						id="menu-toggle"
+						aria-label="Menu"
+					>
+						<span></span>
+						<span></span>
+						<span></span>
+					</button>
+					<nav id="main-nav">
 						<a href="/" class={currentPath === "/" ? "active" : ""}
 							>Home</a
 						>
@@ -75,6 +84,17 @@ const currentPath = Astro.url.pathname;
 					</nav>
 				</div>
 			</div>
+			<script>
+				const menuToggle = document.getElementById("menu-toggle");
+				const nav = document.getElementById("main-nav");
+
+				if (menuToggle && nav) {
+					menuToggle.addEventListener("click", () => {
+						nav.classList.toggle("active");
+						menuToggle.classList.toggle("open");
+					});
+				}
+			</script>
 		</header>
 		<main>
 			<slot />
@@ -248,15 +268,74 @@ const currentPath = Astro.url.pathname;
 		color: var(--secondary);
 	}
 
+	/* Hamburger Menu */
+	.menu-toggle {
+		display: none;
+		flex-direction: column;
+		justify-content: space-around;
+		width: 30px;
+		height: 25px;
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		padding: 0;
+		z-index: 10;
+	}
+
+	.menu-toggle span {
+		width: 30px;
+		height: 3px;
+		background: white;
+		border-radius: 10px;
+		transition: all 0.3s linear;
+		position: relative;
+		transform-origin: 1px;
+	}
+
+	.menu-toggle.open span:nth-child(1) {
+		transform: rotate(45deg);
+	}
+
+	.menu-toggle.open span:nth-child(2) {
+		opacity: 0;
+		transform: translateX(20px);
+	}
+
+	.menu-toggle.open span:nth-child(3) {
+		transform: rotate(-45deg);
+	}
+
 	@media (max-width: 768px) {
 		.header-content {
+			flex-direction: row;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+
+		.logo {
+			font-size: 1.5rem;
+		}
+
+		/* Force display block (or flex) so it's visible */
+		.menu-toggle {
+			display: flex;
+		}
+
+		/* Specific selector to override previous standard nav styles */
+		nav#main-nav {
+			display: none;
+			width: 100%;
 			flex-direction: column;
+			gap: 1rem;
+			padding-top: 1rem;
+			border-top: 1px solid rgba(255, 255, 255, 0.1);
+			margin-top: 1rem;
 			text-align: center;
 		}
 
-		nav {
-			flex-direction: column;
-			gap: 0.5rem;
+		/* Specific selector for active state */
+		nav#main-nav.active {
+			display: flex;
 		}
 
 		.container {
