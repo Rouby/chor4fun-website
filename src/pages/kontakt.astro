@@ -4,8 +4,10 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="Kontakt">
     <div class="container">
-        <h1>Kontakt</h1>
-        <p class="intro">Wir freuen uns, von Ihnen zu hören!</p>
+        <div class="page-header">
+            <h1>Kontakt</h1>
+            <p class="intro">Wir freuen uns, von Ihnen zu hören!</p>
+        </div>
 
         <div class="contact-grid">
             <div class="card contact-info">
@@ -46,18 +48,27 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <style>
-    h1 {
-        font-size: 2.5rem;
-        color: hsl(var(--primary));
-        margin-bottom: 0.5rem;
+    .page-header {
         text-align: center;
+        margin-bottom: 3rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+        color: hsl(var(--primary));
+        margin-bottom: 1rem;
+        font-weight: 700;
     }
 
     .intro {
+        font-size: 1.2rem;
+        color: #555;
+        line-height: 1.6;
         text-align: center;
         margin-bottom: 3rem;
-        font-size: 1.2rem;
-        color: #666;
     }
 
     .contact-grid {
@@ -91,12 +102,11 @@ import Layout from "../layouts/Layout.astro";
     }
 
     h2 {
-        color: hsl(var(--primary-dark));
         font-size: 1.8rem;
+        color: hsl(var(--primary));
         margin-bottom: 1.5rem;
-        border-bottom: 2px solid hsl(var(--primary-light));
-        padding-bottom: 0.5rem;
-        display: inline-block;
+        border-left: 4px solid hsl(var(--secondary));
+        padding-left: 1rem;
     }
 
     h3 {

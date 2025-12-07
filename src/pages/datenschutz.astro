@@ -4,7 +4,9 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="Datenschutz">
     <div class="container">
-        <h1>Datenschutzerklärung</h1>
+        <div class="page-header">
+            <h1>Datenschutzerklärung</h1>
+        </div>
 
         <div class="legal-content">
             <section>
@@ -211,11 +213,19 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <style>
+    .page-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     h1 {
-        font-size: 2.5rem;
+        font-size: 3.5rem;
         color: hsl(var(--primary));
         margin-bottom: 2rem;
-        text-align: center;
+        font-weight: 700;
     }
 
     .legal-content {
@@ -227,6 +237,7 @@ import Layout from "../layouts/Layout.astro";
         margin: 0 auto;
         color: #333;
         line-height: 1.6;
+        border: 1px solid rgba(0, 0, 0, 0.05);
     }
 
     section {
@@ -235,10 +246,10 @@ import Layout from "../layouts/Layout.astro";
 
     h2 {
         font-size: 1.5rem;
-        color: hsl(var(--primary-dark));
+        color: hsl(var(--primary));
         margin-bottom: 1rem;
-        border-bottom: 1px solid #ddd;
-        padding-bottom: 0.5rem;
+        border-left: 4px solid hsl(var(--secondary));
+        padding-left: 1rem;
     }
 
     h3 {
