@@ -6,7 +6,8 @@ interface Props {
 import { ClientRouter } from "astro:transitions";
 
 const { title } = Astro.props;
-const currentPath = Astro.url.pathname;
+const pathname = Astro.url.pathname;
+const currentPath = pathname === "/" ? pathname : pathname.replace(/\/$/, "");
 ---
 
 <!doctype html>
